@@ -73,4 +73,9 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
+#忽略IDE文件
 .idea
+
+# 忽略大世界Actor坐标
+__ExternalActors__
+__ExternalObjects__
