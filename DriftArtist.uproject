@@ -7,7 +7,10 @@
 		{
 			"Name": "DriftArtist",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"ChaosVehicles"
+			]
 		}
 	],
 	"Plugins": [
