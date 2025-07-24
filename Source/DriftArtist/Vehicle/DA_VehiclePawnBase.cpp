@@ -5,4 +5,9 @@
 
 ADA_VehiclePawnBase::ADA_VehiclePawnBase()
 {
+	
+	GameplayCamera = CreateDefaultSubobject<UGameplayCameraComponent>(TEXT("GameplayCameraComponent"));
+	GameplayCamera->SetupAttachment(GetMesh());
+
+	GetMesh()->SetSimulatePhysics(true);
 }
