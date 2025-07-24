@@ -15,7 +15,7 @@ public class DriftArtist : ModuleRules
 			"ChaosVehicles" //物理载具
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayCameras" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayCameras","SmoothSyncPlugin" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
