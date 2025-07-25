@@ -38,6 +38,10 @@ void ADA_VehiclePawnBase::PossessedBy(AController* NewController)
 void ADA_VehiclePawnBase::OnRep_Controller()
 {
 	Super::OnRep_Controller();
+	// if (AbilitySystemComponent)
+	// {
+	// 	InitAbilitySystem();
+	// }
 }
 
 void ADA_VehiclePawnBase::InitAbilitySystem()

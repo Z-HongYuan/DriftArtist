@@ -38,7 +38,7 @@ public:
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_Controller() override;
 
-	//交给谁初始化?
+	//选择在ThisClass内初始化,如果有Bug再改
 	virtual UDA_AbilitySystemComponent* GetAbilitySystemComponent() const override { return AbilitySystemComponent; }
 	UDA_AttributeSetBase* GetAttributeSet() const { return AttributeSet; }
 
