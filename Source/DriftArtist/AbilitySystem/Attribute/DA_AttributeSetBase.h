@@ -44,4 +44,18 @@ public:
 	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, MaxHealth)
 	UFUNCTION()
 	virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth);
+
+	//Dyestuff
+	UPROPERTY(BlueprintReadOnly, Category = "DyeStuff", ReplicatedUsing = OnRep_DyeStuff)
+	FGameplayAttributeData DyeStuff;
+	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, DyeStuff)
+	UFUNCTION()
+	virtual void OnRep_DyeStuff(const FGameplayAttributeData& OldDyeStuff);
+
+	//MaxDyestuff
+	UPROPERTY(BlueprintReadOnly, Category = "DyeStuff", ReplicatedUsing = OnRep_MaxDyeStuff)
+	FGameplayAttributeData MaxDyeStuff;
+	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, MaxDyeStuff)
+	UFUNCTION()
+	virtual void OnRep_MaxDyeStuff(const FGameplayAttributeData& OldMaxDyeStuff);
 };
