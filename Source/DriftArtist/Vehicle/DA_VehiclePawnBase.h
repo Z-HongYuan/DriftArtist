@@ -31,9 +31,14 @@ public:
 	UChaosWheeledVehicleMovementComponent* GetVehicleCMC() const
 	{
 		return CacheCMC == nullptr ? CacheCMC = Cast<UChaosWheeledVehicleMovementComponent>(GetVehicleMovementComponent()) : CacheCMC;
-		// return Cast<UChaosWheeledVehicleMovementComponent>(GetVehicleMovementComponent());
 	}
 
+	//获取可激活技能数量//获取带有标签的可激活技能数量
+	UFUNCTION(BlueprintPure, Category = "AbilitySystem", meta = (DisplayName = "Get Activatable Ability Num"))
+	int32 GetActivatableAbilityNum() const { return GetAbilitySystemComponent() ? GetAbilitySystemComponent()->GetActivatableAbilities().Num() : 0; }
+
+	UFUNCTION(BlueprintPure, Category = "AbilitySystem", meta = (DisplayName = "Get Ability Num With Tag"))
+	int32 GetAbilityNumWithTag(FGameplayTagContainer InTag) const;
 
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_Controller() override;

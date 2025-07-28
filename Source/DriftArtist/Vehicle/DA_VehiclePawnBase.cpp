@@ -24,6 +24,27 @@ ADA_VehiclePawnBase::ADA_VehiclePawnBase()
 	
 }
 
+int32 ADA_VehiclePawnBase::GetAbilityNumWithTag(FGameplayTagContainer InTag) const
+{
+	if (!GetAbilitySystemComponent())
+	{
+		return 0;
+	}
+    
+	int32 Count = 0;
+	const TArray<FGameplayAbilitySpec>& Abilities = GetAbilitySystemComponent()->GetActivatableAbilities();
+    
+	for (const FGameplayAbilitySpec& AbilitySpec : Abilities)
+	{
+		if (AbilitySpec.Ability && AbilitySpec.GetDynamicSpecSourceTags().HasAny(InTag))
+		{
+			Count++;
+		}
+	}
+    
+	return Count;
+}
+
 void ADA_VehiclePawnBase::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
