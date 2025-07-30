@@ -10,6 +10,7 @@
 #include "DriftArtist/AbilitySystem/DA_AbilitySystemComponent.h"
 #include "DriftArtist/AbilitySystem/Attribute/DA_AttributeSetBase.h"
 #include "GameFramework/GameplayCameraComponent.h"
+#include "MovementComponent/DA_ChaosWheelCMC.h"
 #include "DA_VehiclePawnBase.generated.h"
 
 /**
@@ -21,16 +22,16 @@ class DRIFTARTIST_API ADA_VehiclePawnBase : public AWheeledVehiclePawn, public I
 	GENERATED_BODY()
 
 public:
-	ADA_VehiclePawnBase();
+	ADA_VehiclePawnBase(const FObjectInitializer& ObjectInitializer);
 
 	/*
 	 * 使用缓存CMC返回增强型CMC组件,官方组件解释默认CMC是UChaosWheeledVehicleMovementComponent,但是从蓝图中获取是基础CMC组件,拓展性不高
 	 * 按照默认配置,返回增强CMC组件应该没有问题
 	 */
 	UFUNCTION(BlueprintPure, Category = "Vehicle|Movement", meta = (DisplayName = "Get Vehicle CMC"))
-	UChaosWheeledVehicleMovementComponent* GetVehicleCMC() const
+	UDA_ChaosWheelCMC* GetVehicleCMC() const
 	{
-		return CacheCMC == nullptr ? CacheCMC = Cast<UChaosWheeledVehicleMovementComponent>(GetVehicleMovementComponent()) : CacheCMC;
+		return CacheCMC == nullptr ? CacheCMC = Cast<UDA_ChaosWheelCMC>(GetVehicleMovementComponent()) : CacheCMC;
 	}
 
 	//获取可激活技能数量//获取带有标签的可激活技能数量
@@ -91,5 +92,5 @@ private:
 	TObjectPtr<USmoothSync> SmoothSync;
 
 	UPROPERTY()
-	mutable TObjectPtr<UChaosWheeledVehicleMovementComponent> CacheCMC;
+	mutable TObjectPtr<UDA_ChaosWheelCMC> CacheCMC;
 };

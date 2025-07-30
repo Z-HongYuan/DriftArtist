@@ -4,7 +4,8 @@
 #include "DA_VehiclePawnBase.h"
 
 
-ADA_VehiclePawnBase::ADA_VehiclePawnBase()
+ADA_VehiclePawnBase::ADA_VehiclePawnBase(const FObjectInitializer& ObjectInitializer):
+	Super(ObjectInitializer.SetDefaultSubobjectClass<UDA_ChaosWheelCMC>(VehicleMovementComponentName))
 {
 	//摄像机系统
 	GameplayCamera = CreateDefaultSubobject<UGameplayCameraComponent>(TEXT("GameplayCameraComponent"));
@@ -21,7 +22,6 @@ ADA_VehiclePawnBase::ADA_VehiclePawnBase()
 	//平滑同步
 	SmoothSync = CreateDefaultSubobject<USmoothSync>(TEXT("SmoothSync"));
 	SetReplicatingMovement(false);
-	
 }
 
 int32 ADA_VehiclePawnBase::GetAbilityNumWithTag(FGameplayTagContainer InTag) const
@@ -30,10 +30,10 @@ int32 ADA_VehiclePawnBase::GetAbilityNumWithTag(FGameplayTagContainer InTag) con
 	{
 		return 0;
 	}
-    
+
 	int32 Count = 0;
 	const TArray<FGameplayAbilitySpec>& Abilities = GetAbilitySystemComponent()->GetActivatableAbilities();
-    
+
 	for (const FGameplayAbilitySpec& AbilitySpec : Abilities)
 	{
 		if (AbilitySpec.Ability && AbilitySpec.GetDynamicSpecSourceTags().HasAny(InTag))
@@ -41,7 +41,7 @@ int32 ADA_VehiclePawnBase::GetAbilityNumWithTag(FGameplayTagContainer InTag) con
 			Count++;
 		}
 	}
-    
+
 	return Count;
 }
 
