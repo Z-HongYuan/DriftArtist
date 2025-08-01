@@ -16,7 +16,7 @@ void ADA_PlayerControllerBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (IsLocalController()) //在本地控制器中添加Mapping
+	/*if (IsLocalController()) //在本地控制器中添加Mapping
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 		{
@@ -27,14 +27,14 @@ void ADA_PlayerControllerBase::BeginPlay()
 		{
 			UE_LOG(LogTemp, Warning, TEXT("AGenshinPlayerController::BeginPlay() UEnhancedInputLocalPlayerSubsystem is nullptr"));
 		}
-	}
+	}*/
 }
 
 void ADA_PlayerControllerBase::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	if (IsLocalController())
+	/*if (IsLocalController())
 	{
 		if (UDA_EnhanceInputComponent* DA_EnhanceInputComponent = CastChecked<UDA_EnhanceInputComponent>(InputComponent))
 		{
@@ -46,9 +46,10 @@ void ADA_PlayerControllerBase::SetupInputComponent()
 				&ThisClass::AbilityInputTagHeld
 			);
 		}
-	}
+	}*/
 }
 
+/*
 void ADA_PlayerControllerBase::AbilityInputTagPressed(FGameplayTag InputTag)
 {
 	if (GetASC() == nullptr) return;
@@ -76,3 +77,4 @@ UDA_AbilitySystemComponent* ADA_PlayerControllerBase::GetASC()
 	}
 	return AvatarASC.Get();
 }
+*/

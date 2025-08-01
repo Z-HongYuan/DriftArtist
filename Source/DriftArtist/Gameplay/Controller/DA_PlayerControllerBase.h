@@ -25,7 +25,8 @@ public:
 	virtual void SetupInputComponent() override;
 
 protected:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	
+	/*UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputMappingContext> DefaultAbilityContext;
 
 	//Ability与Tag对应的数据资产
@@ -38,5 +39,6 @@ protected:
 	void AbilityInputTagHeld(FGameplayTag InputTag);
 
 	TWeakObjectPtr<UDA_AbilitySystemComponent> AvatarASC;
-	UDA_AbilitySystemComponent* GetASC();
+	UDA_AbilitySystemComponent* GetASC();*/
+	
 };
