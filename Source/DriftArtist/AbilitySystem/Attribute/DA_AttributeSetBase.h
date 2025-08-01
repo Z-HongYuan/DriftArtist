@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 #include "AttributeSet.h"
+#include "WheeledVehiclePawn.h"
 #include "DA_AttributeSetBase.generated.h"
 
 // 属性访问宏,Attribute提供的快捷构建器,用于创建Getter和Setter
@@ -58,4 +59,18 @@ public:
 	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, MaxDyeStuff)
 	UFUNCTION()
 	virtual void OnRep_MaxDyeStuff(const FGameplayAttributeData& OldMaxDyeStuff);
+
+	//喷射范围
+	UPROPERTY(BlueprintReadOnly, Category = "SprayRange", ReplicatedUsing = OnRep_SprayRange)
+	FGameplayAttributeData SprayRange;
+	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, SprayRange)
+	UFUNCTION()
+	virtual void OnRep_SprayRange(const FGameplayAttributeData& OldSprayRange);
+
+	//禁用碰撞 1禁用 0正常
+	UPROPERTY(BlueprintReadOnly, Category = "Collision", ReplicatedUsing = OnRep_Collision)
+	FGameplayAttributeData Collision;
+	ATTRIBUTE_ACCESSORS(UDA_AttributeSetBase, Collision)
+	UFUNCTION()
+	virtual void OnRep_Collision(const FGameplayAttributeData& OldCollision);
 };

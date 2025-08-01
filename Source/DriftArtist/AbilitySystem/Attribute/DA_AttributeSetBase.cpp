@@ -19,6 +19,10 @@ void UDA_AttributeSetBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UDA_AttributeSetBase, DyeStuff, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UDA_AttributeSetBase, MaxDyeStuff, COND_None, REPNOTIFY_Always);
+
+	DOREPLIFETIME_CONDITION_NOTIFY(UDA_AttributeSetBase, SprayRange, COND_None, REPNOTIFY_Always);
+
+	DOREPLIFETIME_CONDITION_NOTIFY(UDA_AttributeSetBase, Collision, COND_None, REPNOTIFY_Always);
 }
 
 void UDA_AttributeSetBase::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -47,6 +51,34 @@ void UDA_AttributeSetBase::PostGameplayEffectExecute(const FGameplayEffectModCal
 	{
 		SetDyeStuff(FMath::Clamp(GetDyeStuff(), 0.0f, GetMaxDyeStuff()));
 	}
+
+	//无效需要使用RPC来修改全部Pawn的碰撞
+	// if (Data.EvaluatedData.Attribute == GetCollisionAttribute())
+	// {
+	// 	bool bNoCollision = GetCollision() > 0.5f;
+	// 	// 拿到 ASC 的 AvatarActor 或拥有者角色
+	// 	if (UAbilitySystemComponent* ASC = Cast<UAbilitySystemComponent>(this->GetOwningAbilitySystemComponent()))
+	// 	{
+	// 		if (AActor* OwnerActor = ASC->GetAvatarActor())
+	// 		{
+	// 			UPrimitiveComponent* Prim = OwnerActor->FindComponentByClass<USkeletalMeshComponent>();
+	// 			if (Prim)
+	// 			{
+	// 				// // 切换碰撞配置名称，自动覆盖设置
+	// 				// FName ProfileName = bNoCollision ? FName("车辆无碰撞") : FName("Vehicle");
+	// 				// Prim->SetCollisionProfileName(ProfileName, /*bUpdateOverlaps=*/ true);
+	// 				if (bNoCollision)
+	// 				{
+	// 					Prim->SetCollisionResponseToChannel(ECC_Vehicle, ECR_Ignore);
+	// 				}
+	// 				else
+	// 				{
+	// 					Prim->SetCollisionResponseToChannel(ECC_Vehicle, ECR_Block);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 void UDA_AttributeSetBase::OnRep_Health(const FGameplayAttributeData& OldHealth)
@@ -67,4 +99,14 @@ void UDA_AttributeSetBase::OnRep_DyeStuff(const FGameplayAttributeData& OldDyeSt
 void UDA_AttributeSetBase::OnRep_MaxDyeStuff(const FGameplayAttributeData& OldMaxDyeStuff)
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UDA_AttributeSetBase, MaxDyeStuff, OldMaxDyeStuff);
+}
+
+void UDA_AttributeSetBase::OnRep_SprayRange(const FGameplayAttributeData& OldSprayRange)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UDA_AttributeSetBase, SprayRange, OldSprayRange);
+}
+
+void UDA_AttributeSetBase::OnRep_Collision(const FGameplayAttributeData& OldCollision)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UDA_AttributeSetBase, Collision, OldCollision);
 }
