@@ -31,6 +31,10 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "OnInputReleased"), Category = "Ability")
 	void K2_OnInputReleased();
 
+	//技能图标材质
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Icon")
+	TObjectPtr<UMaterialInterface> AbilityIconMaterial;
+
 protected:
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
 	                             const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
