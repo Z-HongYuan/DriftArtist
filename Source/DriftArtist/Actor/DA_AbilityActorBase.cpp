@@ -51,6 +51,8 @@ void ADA_AbilityActorBase::GiveAbilityToVehicle(class ADA_VehiclePawnBase* Vehic
 	if (!ASC) return;
 
 	TArray<FGameplayAbilitySpecHandle> ActivatableAbilities;
+
+	//根据检测Tag寻找可激活技能
 	ASC->FindAllAbilitiesWithTags(ActivatableAbilities, CheckTags);
 	int32 ActiveAbilityCount = ActivatableAbilities.Num();
 
