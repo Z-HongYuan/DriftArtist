@@ -23,7 +23,7 @@ struct FDA_ColorTagData
 /**
  * 用于颜色与Tag对应
  */
-UCLASS()
+UCLASS(BlueprintType)
 class DRIFTARTIST_API UDA_ColorDataAsset : public UDataAsset
 {
 	GENERATED_BODY()
