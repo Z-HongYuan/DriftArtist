@@ -28,7 +28,7 @@ int32 ADA_VehiclePawnBase::GetAbilityNumWithTag(FGameplayTagContainer InTag) con
 {
 	if (!GetAbilitySystemComponent())
 	{
-		return 0;
+		return -1;
 	}
 
 	int32 Count = 0;

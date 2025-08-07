@@ -36,7 +36,7 @@ public:
 
 	//获取可激活技能数量//获取带有标签的可激活技能数量
 	UFUNCTION(BlueprintPure, Category = "AbilitySystem", meta = (DisplayName = "Get Activatable Ability Num"))
-	int32 GetActivatableAbilityNum() const { return GetAbilitySystemComponent() ? GetAbilitySystemComponent()->GetActivatableAbilities().Num() : 0; }
+	int32 GetActivatableAbilityNum() const { return GetAbilitySystemComponent() ? GetAbilitySystemComponent()->GetActivatableAbilities().Num() : -1; }
 
 	UFUNCTION(BlueprintPure, Category = "AbilitySystem", meta = (DisplayName = "Get Ability Num With Tag"))
 	int32 GetAbilityNumWithTag(FGameplayTagContainer InTag) const;
