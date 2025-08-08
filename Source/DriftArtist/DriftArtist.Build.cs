@@ -15,13 +15,13 @@ public class DriftArtist : ModuleRules
 			"ChaosVehicles" //物理载具
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayCameras","SmoothSyncPlugin" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayCameras","SmoothSyncPlugin", "AdvancedSessions" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 
 		// Uncomment if you are using online features
-		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
+		PrivateDependencyModuleNames.Add("OnlineSubsystem");
 
 		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
 	}
